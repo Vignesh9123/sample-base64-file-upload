@@ -11,7 +11,7 @@ function App() {
       fileReader.onload = async() => {
         const base64 = fileReader.result
         console.log('base64', base64)
-        const response = await fetch('http://localhost:3000/upload', {
+        const response = await fetch('https://sample-base64-file-upload.vercel.app/upload', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
