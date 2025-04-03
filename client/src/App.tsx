@@ -6,6 +6,10 @@ function App() {
     const formData = new FormData(e.currentTarget)
     const file = formData.get('file') as File | null
     if (file) {
+      if(file.size > 10 * 1024 * 1024) {
+        alert('File size exceeds 10MB')
+        return
+      }
       const fileReader = new FileReader()
       fileReader.readAsDataURL(file)
       fileReader.onload = async() => {
@@ -27,7 +31,7 @@ function App() {
     <div>
       <h1>File Upload</h1>
       <form onSubmit={handleFormSubmit}>
-        <input type="file" name="file" />
+        <input type="file" name="file" accept="image/*" />
         <button type="submit">Upload</button>
       </form>
     </div>
